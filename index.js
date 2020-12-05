@@ -111,7 +111,7 @@ const runCommand = async () => {
         }
     }
 
-    let spinner = new clui.Spinner("Sending request...");
+    let spinner = new clui.Spinner("Sending request...", ['◜','◠','◝','◞','◡','◟']);
     spinner.start();
     await axios.put(`https://api.lifx.com/v1/lights/${lightId}/state`, data, getRequestConfig()).then((res) => {
         spinner.stop();
