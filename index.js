@@ -101,7 +101,11 @@ const runCommand = async () => {
 
         while (!done) {
             let option = (await inquirer.askLightOption())['lightOption'];
-            data[option.toLowerCase()] = (await inquirer.askLightValue(option, isValid))['lightValue'];
+            let value = (await inquirer.askLightValue(option, isValid))['lightValue'];
+            if (isNumber(value)) {
+                value = parseFloat(value);
+            }
+            data[option.toLowerCase()] = value;
 
             done = (await inquirer.askInputDone())['inputDone'];
         }
